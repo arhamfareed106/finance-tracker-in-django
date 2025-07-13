@@ -3,6 +3,5 @@ from django.urls import path
 from fintech import views  # Import views from the fintech app
 
 urlpatterns = [
-    path('admin/', admin.site.urls),
-    path('', views.home, name='home'),
+    path('register/', views.RegisterView.as_view(), name='register'),
 ]

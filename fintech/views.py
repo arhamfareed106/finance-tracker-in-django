@@ -2,6 +2,15 @@ from django import urls
 from django.urls import path
 from django.http import HttpResponse
 from django.shortcuts import render
+from django.views import View
 
-def home(request):
-    return HttpResponse("Welcome to the home page!")
+
+
+
+
+class RegisterView(View):
+    def get(self, request, *args, **kwargs):
+        return render(request, 'fintech/register.html')
+    
+    
+    
