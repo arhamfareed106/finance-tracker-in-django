@@ -3,6 +3,7 @@ from django.urls import path
 from django.http import HttpResponse
 from django.shortcuts import render
 from django.views import View
+from fintech.forms import  RegisterForm
 
 
 
