@@ -11,7 +11,8 @@ from fintech.forms import  RegisterForm
 
 class RegisterView(View):
     def get(self, request, *args, **kwargs):
-        return render(request, 'fintech/register.html')
+        form = RegisterForm()
+        return render(request, 'fintech/register.html', {'form': form})
     
     
     
