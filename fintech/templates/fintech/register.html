@@ -1,19 +1,136 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
-
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <script src="https://cdn.tailwindcss.com"></script>
     <title>Register Page</title>
-</head>
-<body>
-    <div class="max-w-md mx-auto bg-white p-6 rounded-lg shadow-md mt-10">
-        <h1 class=" text-3xl font-bold text-center text-indigo-600 mb-6">Create an account</h1>
-        <h1></h1>
-        {% include "" %}
-        <div></div>
-        {% if error %} %}{% endif %}
+    <style>
+      @keyframes fadeIn {
+        from {
+          opacity: 0;
+          transform: translateY(-20px);
+        }
+        to {
+          opacity: 1;
+          transform: translateY(0);
+        }
+      }
+      .animate-fade-in {
+        animation: fadeIn 0.6s ease-out forwards;
+      }
+
+      @keyframes typing {
+        from { width: 0 }
+        to { width: 100% }
+      }
+      
+      .animate-typing {
+        overflow: hidden;
+        white-space: nowrap;
+        border-right: 3px solid;
+        width: 0;
+        animation: typing 2s steps(20, end) forwards,
+                   blink-caret .75s step-end infinite;
+      }
+
+      @keyframes blink-caret {
+        from, to { border-color: transparent }
+        50% { border-color: #4f46e5 }
+      }
+    </style>
+  </head>
+  <body class="bg-gray-50">
+    <div
+      class="max-w-md mx-auto bg-white p-6 rounded-lg shadow-md mt-10 animate-fade-in"
+    >
+      <h1 class="text-3xl font-bold text-center text-indigo-600 mb-6">
+        Create an account
+      </h1>
+      <form method="post" action="">
+        {% csrf_token %}
+
+        <div class="mb-4">
+          <label
+            class="block text-sm font-medium text-gray-700"
+            for="id_username"
+            >Username</label
+          >
+          <input
+            type="text"
+            id="id_username"
+            name="username"
+            class="mt-1 block w-full px-3 py-2 border border-gray-300 rounded-lg shadow-sm focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm"
+            placeholder="Enter your username"
+            required
+          />
+          {% if form.username.errors %}
+          <p class="text-red-500 text-sm mt-1">{{ form.username.errors.0 }}</p>
+          {% endif %}
+        </div>
+
+        <div class="mb-4">
+          <label class="block text-sm font-medium text-gray-700" for="id_email"
+            >Email address</label
+          >
+          <input
+            type="email"
+            id="id_email"
+            name="email"
+            class="mt-1 block w-full px-3 py-2 border border-gray-300 rounded-lg shadow-sm focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm"
+            placeholder="Enter your email address"
+            required
+          />
+          {% if form.email.errors %}
+          <p class="text-red-500 text-sm mt-1">{{ form.email.errors.0 }}</p>
+          {% endif %}
+        </div>
+
+        <div class="mb-4">
+          <label
+            class="block text-sm font-medium text-gray-700"
+            for="id_password1"
+            >Password</label
+          >
+          <input
+            type="password"
+            id="id_password1"
+            name="password1"
+            class="mt-1 block w-full px-3 py-2 border border-gray-300 rounded-lg shadow-sm focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm"
+            placeholder="Enter your password"
+            required
+          />
+          {% if form.password1.errors %}
+          <p class="text-red-500 text-sm mt-1">{{ form.password1.errors.0 }}</p>
+          {% endif %}
+        </div>
+
+        <div class="mb-4">
+          <label
+            class="block text-sm font-medium text-gray-700"
+            for="id_password2"
+            >Confirm Password</label
+          >
+          <input
+            type="password"
+            id="id_password2"
+            name="password2"
+            class="mt-1 block w-full px-3 py-2 border border-gray-300 rounded-lg shadow-sm focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm"
+            placeholder="Confirm your password"
+            required
+          />
+          {% if form.password2.errors %}
+          <p class="text-red-500 text-sm mt-1">{{ form.password2.errors.0 }}</p>
+          {% endif %}
+        </div>
+
+        <button
+          type="submit"
+          class="mt-4 w-full py-2 px-4 bg-indigo-600 text-white font-semibold rounded-lg shadow-md hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-indigo-500"
+        >
+          Register
+        </button>
+      </form>
     </div>
-</body>
+  </body>
 </html>
