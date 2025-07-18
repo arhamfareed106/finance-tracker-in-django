@@ -1,12 +1,11 @@
-<!DOCTYPE html>
-<html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <script src="https://cdn.tailwindcss.com"></script>
-    <title>Register Page</title>
+{% extends "registration/base.html" %}
 
-    <!-- Tailwind Config for Animations -->
+{% block title %}Register Page{% endblock %}
+   
+
+{% block content %}
+
+ <!-- Tailwind Config for Animations -->
     <script>
       tailwind.config = {
         theme: {
@@ -134,3 +133,6 @@
     </div>
   </body>
 </html>
+
+
+{% endblock content %}

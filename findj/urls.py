@@ -21,4 +21,5 @@ from fintech import views  # Replace 'my_app' with your actual app name
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('', include('fintech.urls')),
+    path('account/', include('django.contrib.auth.urls')),  # For login/logout
 ]
