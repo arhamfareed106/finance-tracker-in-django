@@ -1,8 +1,7 @@
-from django.contrib import admin
 from django.urls import path
-from fintech import views  # Import views from the fintech app
+from fintech.views import RegisterView, DashboardView  # Import views from the fintech app
 
 urlpatterns = [
-    path('register/', views.RegisterView.as_view(), name='register'),
-    # path('login/', views.LoginView.as_view(), name='login'),
+    path('register/', RegisterView.as_view(), name='register'),
+    path('', DashboardView.as_view(), name='dashboard'),
 ]
