@@ -4,11 +4,32 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <script src="https://cdn.tailwindcss.com"></script>
-    <title>{% block title %}{% endblock %}</title>
-          </head>
-          <body>
-            {% block content %}
-            
-            {% endblock content %}
-      </body>
+    <title>{% block title %}Finance Tracker{% endblock %}</title>
+  </head>
+
+  <body class="bg-gray-100 min-h-screen flex flex-col">
+    <!-- Navbar -->
+    <nav class="bg-indigo-600 p-4 text-white shadow-md">
+      <div class="max-w-7xl mx-auto flex justify-between items-center">
+        <div class="text-xl font-bold">
+          <a href="/" class="hover:text-indigo-200 transition duration-300">Finance Tracker</a>
+        </div>
+        <div class="space-x-6">
+          <a href="{% url 'login' %}" class="text-lg font-semibold hover:text-indigo-200 transition duration-300">Login</a>
+          <a href="{% url 'register' %}" class="text-lg font-semibold hover:text-indigo-200 transition duration-300">Register</a>
+        </div>
+      </div>
+    </nav>
+
+    <!-- Main Content -->
+    <main class="flex-grow">
+      {% block content %}
+      {% endblock content %}
+    </main>
+
+    <!-- Footer (optional) -->
+    <footer class="bg-indigo-600 text-white text-center p-4 mt-10 shadow-inner">
+      &copy; {{ now|date:"Y" }} Finance Tracker. All rights reserved.
+    </footer>
+  </body>
 </html>
