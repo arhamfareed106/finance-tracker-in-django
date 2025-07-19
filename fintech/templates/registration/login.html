@@ -4,12 +4,24 @@
 
 {% block content %}
 <div class="min-h-screen flex items-center justify-center bg-gradient-to-br from-gray-100 to-gray-300 py-16 px-4 sm:px-6 lg:px-8">
-    <div class="max-w-md w-full bg-white p-10 rounded-2xl shadow-2xl">
+    <div class="max-w-md w-full bg-white p-10 rounded-3xl shadow-lg transform transition-all duration-300 animate-fade-in">
+        <!-- Logo / Icon -->
+        <div class="flex justify-center mb-6">
+            <div class="h-16 w-16 bg-blue-100 text-blue-600 flex items-center justify-center rounded-full shadow-inner">
+                <svg xmlns="http://www.w3.org/2000/svg" class="h-8 w-8" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                          d="M3 10h2l1 2 2-4 2 6 2-4h6" />
+                </svg>
+            </div>
+        </div>
+
+        <!-- Heading -->
         <div class="text-center">
-            <h2 class="text-4xl font-extrabold text-gray-900">Finance Tracker</h2>
+            <h2 class="text-3xl sm:text-4xl font-extrabold text-gray-900">Finance Tracker</h2>
             <p class="mt-2 text-sm text-gray-500">Sign in to your account to continue</p>
         </div>
 
+        <!-- Form -->
         <form method="post" class="mt-10 space-y-6">
             {% csrf_token %}
 
@@ -22,16 +34,8 @@
                         name="username" 
                         id="id_username" 
                         required 
-                        class="block w-full px-4 py-2 border border-gray-300 rounded-md shadow-sm placeholder-gray-400 text-gray-900 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-blue-500 sm:text-sm" 
+                        class="block w-full px-4 py-2 border border-gray-300 rounded-lg shadow-sm placeholder-gray-400 text-gray-900 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-blue-500 sm:text-sm" 
                         placeholder="Enter your username">
-                    <div class="absolute inset-y-0 right-0 pr-3 flex items-center pointer-events-none">
-                        <svg class="h-5 w-5 text-gray-400" fill="none" stroke="currentColor" stroke-width="1.5"
-                             viewBox="0 0 24 24">
-                            <path d="M16 12a4 4 0 11-8 0 4 4 0 018 0z" />
-                            <path stroke-linecap="round" stroke-linejoin="round"
-                                  d="M12 14c-4.418 0-8 1.79-8 4v2h16v-2c0-2.21-3.582-4-8-4z"/>
-                        </svg>
-                    </div>
                 </div>
             </div>
 
@@ -44,7 +48,7 @@
                         name="password" 
                         id="id_password" 
                         required 
-                        class="block w-full px-4 py-2 border border-gray-300 rounded-md shadow-sm placeholder-gray-400 text-gray-900 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-blue-500 sm:text-sm" 
+                        class="block w-full px-4 py-2 border border-gray-300 rounded-lg shadow-sm placeholder-gray-400 text-gray-900 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-blue-500 sm:text-sm" 
                         placeholder="••••••••">
                     <button type="button" onclick="togglePassword()"
                         class="absolute inset-y-0 right-0 pr-3 flex items-center text-sm text-blue-500 hover:text-blue-700 focus:outline-none">
@@ -56,13 +60,30 @@
             <!-- Submit Button -->
             <div>
                 <button type="submit"
-                        class="w-full flex justify-center py-2 px-4 border border-transparent rounded-md shadow-sm text-white bg-blue-600 hover:bg-blue-700 transition duration-150 ease-in-out font-semibold focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-blue-500">
+                        class="w-full flex justify-center py-2 px-4 rounded-lg shadow-sm text-white bg-blue-600 hover:bg-blue-700 transition duration-150 ease-in-out font-semibold focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-blue-500">
                     Sign In
                 </button>
             </div>
         </form>
     </div>
 </div>
+
+<!-- Animation -->
+<style>
+@keyframes fade-in {
+  from {
+    opacity: 0;
+    transform: translateY(10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+.animate-fade-in {
+  animation: fade-in 0.5s ease-out;
+}
+</style>
 
 <script>
 function togglePassword() {
