@@ -6,6 +6,8 @@ from django.views import View
 from flask import request
 from fintech.forms import  RegisterForm
 from django.contrib.auth import login
+from django.contrib.auth.mixins import LoginRequiredMixin
+from django.contrib.auth.decorators import login_required
 
 
 
@@ -23,7 +25,7 @@ class RegisterView(View):
 
 
 
-class DashboardView(View):
+class DashboardView(LoginRequiredMixin, View):
     def get(self, request,*args, **kwargs ):
         return render(request, 'fintech/dashboard.html')
             
