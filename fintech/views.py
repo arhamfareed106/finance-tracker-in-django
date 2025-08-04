@@ -28,7 +28,7 @@ class RegisterView(View):
 class DashboardView(LoginRequiredMixin, View):
     def get(self, request,*args, **kwargs ):
         return render(request, 'fintech/dashboard.html')
-            
+          
         
     
     

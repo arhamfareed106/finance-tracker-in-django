@@ -14,8 +14,13 @@
         <div class="text-xl font-bold">
           <a href="/" class="hover:text-indigo-200 transition duration-300">Finance Tracker</a>
         </div>
-        <div class="space-x-6">
-        <form action="logout-form" action="{% url 'logout' %}" method="post%}" style="display-inline"></form>
+        <div class="space-x-6 flex items-center">
+          <form id="logout-form" action="{% url 'logout' %}" method="post" class="inline">
+            {% csrf_token %}
+            <button type="submit" class="text-lg font-semibold hover:text-indigo-200 transition duration-300">
+              Logout
+            </button>
+          </form>
           <a href="{% url 'login' %}" class="text-lg font-semibold hover:text-indigo-200 transition duration-300">Login</a>
           <a href="{% url 'register' %}" class="text-lg font-semibold hover:text-indigo-200 transition duration-300">Register</a>
         </div>
@@ -28,7 +33,7 @@
       {% endblock content %}
     </main>
 
-    <!-- Footer (optional) -->
+    <!-- Footer -->
     <footer class="bg-indigo-600 text-white text-center p-4 mt-10 shadow-inner">
       &copy; {{ now|date:"Y" }} Finance Tracker. All rights reserved.
     </footer>
